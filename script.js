@@ -19,7 +19,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = 'rock'
+const playerSelection = prompt("Enter paper, rock or scissors").toLocaleLowerCase()
 const computerSelection = computerPlay()
 
 console.log(playRound(playerSelection,computerSelection))
