@@ -9,3 +9,17 @@ function computerPlay() {
     }
 }
 
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        return "It's a tie"
+    } else if (computerSelection === 'paper') {
+        return "You Lose! Paper beats Rock"
+    } else {
+        return "You Win! Rock beats Scissors"
+    }
+}
+
+const playerSelection = 'rock'
+const computerSelection = computerPlay()
+
+console.log(playRound(playerSelection,computerSelection))
