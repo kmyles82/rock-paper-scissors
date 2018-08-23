@@ -1,0 +1,31 @@
+body {
+    background-color: gainsboro;
+}
+#rpsContainer {
+display: none;
+}
+#main {
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    color: #fff;
+    font-family: monospace;
+    font-size: 14px;
+    
+}
+#title, #playerStatus, #compStatus, #status, #playerChoice {
+    text-align: center;
+}
+.playerChoiceButton {
+    display: inline-block;
+    margin: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid #fff;
+    padding: 10px;
+    min-width: 60px;
+}
+
+.playerChoiceButton:hover {
+    background-color: gray;
+}

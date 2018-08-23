@@ -1,84 +1,94 @@
-function computerPlay() {
-    let random_num = Math.floor(Math.random() * 3)
-    if (random_num === 0) {
-        return "rock"
-    } else if (random_num === 1) {
-        return "paper"
-    } else {
-        return "scissors"
-    }
+var playerScore =	0;
+	
+var compScore =	0
+	
+function showGame () {
+	var showGame = document.getElementById("rpsContainer");
+	var hideButton = document.getElementById("Start");
+	showGame.style.display = "block";
+	hideButton.style.display = "none";
+	document.getElementById("status").innerHTML="Choose your weapon!";
 }
 
-function playerPlay() {
-    let random_num = Math.floor(Math.random() * 3)
-    if (random_num === 0) {
-        return "rock"
-    } else if (random_num === 1) {
-        return "paper"
-    } else {
-        return "scissors"
+
+function computerChoice(foo) {
+    var randomNo = Math.floor((Math.random() * 3) + 1);
+    if (randomNo === 1) {
+    foo = "rock";
     }
-}
-
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase()
-
-    if (playerSelection === computerSelection) {
-        console.log( "It's a tie")
-        return null
-    } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        console.log( "You Lose! Paper beats Rock")
-        return false
-    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        console.log( "You Win! Rock beats Scissors")
-        return true
-    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        console.log( "You Win! Paper beats Rock")
-        return true
-    } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        console.log( "You Lose! Scissors beats Paper")
-        return false
-    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        console.log( "You Win! Scissors beats Paper")
-        return true
-    } else if(playerSelection === 'scissors' && computerSelection === 'rock') {
-        console.log( "You Lose! Rock beats Scissors")
-        return false
+    else if (randomNo === 2){
+    foo = "paper";
     }
-}
-
-function game() {
-    let playerScore = 0
-    let computerScore = 0
-
-    for (var i = 0; i < 5; i++){
-        let playerSelection = prompt("What is your roll?")
-        let computerSelection = computerPlay()
-
-        console.log(playerSelection)
-        console.log(computerSelection)
-        
-        if (playRound(playerSelection, computerSelection) === null) {
-            playerScore = playerScore
+        else {
+            foo="scissors";
         }
-        else if (playRound(playerSelection, computerSelection)) {
-            playerScore += 1
+    return foo;
+}
+function rockPaperScissors(playerMove) {
+    document.getElementById("playerStatus").innerHTML="You chose " + playerMove + ".";
+	
+    var compMove = "";
+    compMove = computerChoice(compMove);
+	document.getElementById("compStatus").innerHTML="I chose " + compMove + ".";
+    if (playerMove===compMove)
+    { document.getElementById("status").innerHTML="The result is a tie!";}
+    else if (playerMove==="rock")
+    {
+        if (compMove==="scissors")
+        {document.getElementById("status").innerHTML="Rock wins!";
+        playerScore = playerScore + 1;
+            }
+        else if (compMove==="paper")
+        {document.getElementById("status").innerHTML="Paper wins...";
+            compScore = compScore + 1;
+            }
+        
+    }
+    else if (playerMove==="paper")
+    {
+        if (compMove==="rock")
+        {document.getElementById("status").innerHTML="Paper wins!";
+            playerScore++;
             
-        } else {
-            computerScore += 1
-        } 
+            }
+        else if (compMove==="scissors")
+        {document.getElementById("status").innerHTML="Scissors wins...";
+            compScore = compScore + 1;
+            
+            }
+        
+    }
+    else if (playerMove==="scissors")
+    {
+        
+        if (compMove==="rock")
+        {
+            document.getElementById("status").innerHTML="Rock wins...";
+            compScore = compScore + 1;
+            }
+        else if (compMove==="paper")
+        {document.getElementById("status").innerHTML="Scissors wins!";
+            playerScore = playerScore + 1;
+            
+            }
+        
     }
 
-    if (playerScore > computerScore) {
-        return "Player is the winner with the score of " + playerScore + " vs the Computer score of " + computerScore
-    } else {
-        return "Computer is the winner with the score of " + computerScore + " vs the Player score of " + playerScore 
-    }
+        document.getElementById("playerScore").innerHTML=playerScore;
+        document.getElementById("compScore").innerHTML=compScore;
+
 }
 
 
-
-
-// console.log(playRound(playerSelection,computerSelection))
-console.log(game())
-console.log("---------------------")
+var reset = function() {
+	
+playerScore=0;
+compScore=0;
+	document.getElementById("playerStatus").innerHTML="";
+	
+	document.getElementById("compStatus").innerHTML="";
+	document.getElementById("playerScore").innerHTML=playerScore;
+	document.getElementById("compScore").innerHTML=compScore;
+	
+	document.getElementById("status").innerHTML="Choose your weapon!";
+}
